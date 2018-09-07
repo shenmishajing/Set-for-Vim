@@ -1,4 +1,4 @@
-"   Last Modified   : 2018-05-23 20:18:21
+"   Last Modified   : 2018-08-24 15:00:15
 "   最后修改时间------------------------------------------
 
 set nocompatible               "be iMproved
@@ -376,7 +376,7 @@ let g:ycm_filetype_whitelist = {
 "inoremap <leader><leader> <C-x><C-o>
 
 let g:ycm_confirm_extra_conf=1                  " 关闭加载.ycm_extra_conf.py确认提示
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
 ""配置taglist --------------------------------------------------------------------------------------------
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>      " 跳转到定义处
