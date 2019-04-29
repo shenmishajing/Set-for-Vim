@@ -1,4 +1,4 @@
-"   Last Modified   : 2018-08-24 15:00:15
+"   Last Modified   : 2019-04-29 15:37:20
 "   最后修改时间------------------------------------------
 
 set nocompatible               "be iMproved
@@ -38,21 +38,23 @@ set selectmode=mouse,key
 set matchtime=5
 set ignorecase                  "忽略大小写"
 set incsearch
-" set hlsearch                  "高亮搜索项"
+set hlsearch                  "高亮搜索项"
 set expandtab                   "扩展table，使Tab键变为指定个数的空格键"
 set whichwrap+=<,>,h,l
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 "使vim支持中文"
 filetype plugin indent on      "开启文件类型推定
 autocmd bufwritepost .vimrc source $MYVIMRC                             "修改.vimrc后自动应用配置
 
+set langmap=hd,jh,kt,ln            "重新映射方向键"
+
 " 键盘映射 -------------------------------------
 " ----------------------------------------------
 
 " 多窗口操作------------------------------------
-map <C-H> <C-W>h
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-L> <C-W>l
+map <C-D> <C-W>h
+map <C-H> <C-W>j
+map <C-T> <C-W>k
+map <C-N> <C-W>l
 map <C-T> <C-W>t
 map <C-B> <C-W>b
 map <C-W>= :vertical resize +3<CR>
@@ -352,8 +354,8 @@ let g:ycm_complete_in_comments = 1                      " 在注释输入中也�
 let g:ycm_complete_in_strings = 1                       " 在字符串输入中也能补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 1     " 注释和字符串中的文字也会被收入补全
 let g:ycm_semantic_triggers =  {
-            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{5}'],
-            \ 'cs,lua,javascript': ['re!\w{5}'],
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{1}'],
+            \ 'cs,lua,javascript': ['re!\w{1}'],
             \ }                                         "自动开启语义补全
 let g:ycm_filetype_whitelist = {
             \ "c":1,
@@ -472,6 +474,12 @@ let g:autopep8_disable_show_diff=1
 " vim-autopep8自1.11版本之后取消了F8快捷键，需要用户自己为:Autopep8设置快捷键：
 autocmd FileType python noremap <F8> :call Autopep8()<CR>
 
+"配置vim-latex-live-preview ------------------------------------------------------------------------------------
+"PDF文件刷新频率 单位应是“秒”
+autocmd Filetype tex setl updatetime=1
+
+"skim支持
+let g:livepreview_previewer = 'open -a Skim'
 
 " Vundle插件管理 -----------------------------------------------------------------------------------------------
 call vundle#rc()
@@ -504,6 +512,10 @@ Plugin 'klen/python-mode'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'yianwillis/vimcdoc'
 Plugin 'lrvick/Conque-Shell'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'xuhdev/vim-latex-live-preview'
+
 
 " c) 指定非Github的Git仓库的插件，需要使用git地址
 
